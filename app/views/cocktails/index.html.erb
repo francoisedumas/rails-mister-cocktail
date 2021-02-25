@@ -1,27 +1,34 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <h1>Cocktail</h1>
+  <div>
+
+  <%= link_to "Add cocktail",
+    new_cocktail_path,
+    class: "btn btn-primary"%>
+
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag 'logo.jpeg', class: "avatar" %>
   <% end %>
-</div>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
     <% @cocktails.each do |cocktail| %>
-      <tr>
-        <td><%= cocktail.name %></td>
-        <td><%= link_to "See details", cocktail_path(cocktail), class: "btn btn-primary"%></td>
-      </tr>
+      <div class="col-12 col-lg-4">
+        <div class="card mt-3" style="width: 20rem;">
+          <img class="card-img-top" style="height: 250px" src="https://source.unsplash.com/random" alt="My cocktail">
+          <div class="card-body">
+            <h5 class="card-title"><%= cocktail.name %></h5>
+            <p class="card-text">Lorem ipsum</p>
+            <%= link_to "See details", cocktail_path(cocktail), class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <br>
 
-<%= link_to "Add cocktail", new_cocktail_path, class: "btn btn-primary"%>
