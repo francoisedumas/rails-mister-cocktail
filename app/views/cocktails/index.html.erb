@@ -1,0 +1,27 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <h1>Cocktail</h1>
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag 'logo.jpeg', class: "avatar" %>
+  <% end %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cocktails.each do |cocktail| %>
+      <tr>
+        <td><%= cocktail.name %></td>
+        <td><%= link_to "See details", cocktail_path(cocktail), class: "btn btn-primary"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Add cocktail", new_cocktail_path, class: "btn btn-primary"%>

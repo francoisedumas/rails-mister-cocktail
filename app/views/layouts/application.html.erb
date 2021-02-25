@@ -8,10 +8,19 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Farchitizer-prod.imgix.net%2Fmedia%2F141334474196105_BAR_DETAIL_01.jpg%3Fq%3D60%26auto%3Dformat%2Ccompress%26cs%3Dstrip%26w%3D1680&f=1&nofb=1');">
+      <div class="container">
+        <h1>Cocktail & Co!</h1>
+        <p>Nore more coding, just drinking</p>
+      </div>
+    </div>
+    <div class="container mt-3">
+      <%= yield %>
+    </div>
   </body>
 </html>
