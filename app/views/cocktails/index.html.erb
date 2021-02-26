@@ -4,24 +4,35 @@
 
   <%= link_to "Add cocktail",
     new_cocktail_path,
-    class: "btn btn-primary"%>
+    class: "btn-medium"%>
 
   </div>
 </div>
-
-  <%= cl_image_tag("dkdqnzd2bfaouxfar2up",
-      width: 400, height: 300, crop: :fill) %>
 
 <div class="container">
   <div class="row">
     <% @cocktails.each do |cocktail| %>
       <div class="col-12 col-lg-4">
         <div class="card mt-3" style="width: 20rem;">
-          <img class="card-img-top" style="height: 250px" src="https://source.unsplash.com/random" alt="My cocktail">
+          <% if cocktail.photo.attached? %>
+            <%= cl_image_tag cocktail.photo.key, height: 250, crop: :fill %>
+          <% else %>
+            <div style="height: 250px; display: flex; justify-content: center; align-items: center">
+              <div style="text-align: center;">
+                <p>Think about adding a picture</p>
+                <%= image_tag 'logo.jpeg', class: "avatar" %>
+              </div>
+            </div>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= cocktail.name %></h5>
             <p class="card-text">Lorem ipsum</p>
-            <%= link_to "See details", cocktail_path(cocktail), class: "btn btn-primary"%>
+            <%= link_to "See details", cocktail_path(cocktail), class: "btn-medium mr-3"%>
+            <%= link_to cocktail_path(cocktail),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
           </div>
         </div>
       </div>

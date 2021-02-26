@@ -1,0 +1,12 @@
+.btn-medium {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #999999;
+  padding: 15px 20px;
+  opacity: 0.6;
+  &:hover {
+   color: #999999;
+ }
+}
