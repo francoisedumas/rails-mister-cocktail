@@ -10,11 +10,14 @@ Ingredient.destroy_all
 
 puts "Seeding some ingredient..."
 
-Ingredient.create(name: "lemon")
-Ingredient.create(name: "ice")
-Ingredient.create(name: "mint leaves")
+Ingredient.create(name: "Ice")
+Ingredient.create(name: "Lemon")
+Ingredient.create(name: "Sparkling water")
+Ingredient.create(name: "Milk")
+Ingredient.create(name: "Mint leaves")
 Ingredient.create(name: "Dark rum")
 Ingredient.create(name: "Sweet Vermouth")
 Ingredient.create(name: "Triple sec")
+Ingredient.create(name: "Vodka")
 
 puts "Finished!"
