@@ -3,37 +3,67 @@
 <div class="container">
 
   <h1>cocktail details</h1>
-
   <p>
     <strong>Name:</strong>
     <%= @cocktail.name.capitalize %>
   </p>
 
-  <div class="card mt-3" style="width: 40rem;">
-    <div class="card-body">
-      <h5 class="card-title">Ingredient:</h5>
-      <ul class="list-group">
-        <% @cocktail.doses.each do |dose| %>
-          <li class="list-group-item list-group-item-primary mt-1">
-            Ingredient: <%= Ingredient.find(dose.ingredient_id).name %> | Quantity:  <%= dose.description %>
-            <%= link_to dose_path(dose),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' } do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-          </li>
-        <% end %>
-      </ul>
+  <div class="row">
+
+    <div class="col-6">
+      <div class="card mt-3" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title">Ingredient:</h5>
+          <ul class="list-group">
+            <% @cocktail.doses.each do |dose| %>
+              <li class="list-group-item list-group-item-primary mt-1">
+                Ingredient: <%= Ingredient.find(dose.ingredient_id).name %> | Quantity:  <%= dose.description %>
+                <%= link_to dose_path(dose),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card mt-3" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title">Image:</h5>
+          <% if @cocktail.photo.attached? %>
+            <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <p>upload a picture</p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="card mt-3" style="width: 40rem;">
-    <div class="card-body">
-      <%= simple_form_for ([@cocktail, @dose]) do |f| %>
-        <%= f.input :description %>
-        <%= f.association :ingredient %>
-        <%= f.button :submit %>
-      <% end %>
+  <div class="row">
+    <div class="col-6">
+      <div class="card mt-3" style="width: 30rem;">
+        <div class="card-body">
+          <%= simple_form_for ([@cocktail, @dose]) do |f| %>
+            <%= f.input :description %>
+            <%= f.association :ingredient %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card mt-3" style="width: 30rem;">
+        <div class="card-body">
+          <%= simple_form_for (@cocktail) do |f| %>
+            <%= f.input :photo, as: :file %>
+            <%= f.button :submit %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
